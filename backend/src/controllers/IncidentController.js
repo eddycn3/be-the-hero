@@ -47,7 +47,7 @@ module.exports = {
       .first(); //n retorna um array e sim o primeiro objeto buscado
 
     if (!incident) {
-      return response.status(400).json("Incident not found.");
+      return response.status(400).json({ error: "Incident not found." });
     }
 
     if (incident.ong_id != ong_id) {
