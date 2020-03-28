@@ -8,7 +8,7 @@ import "./styles.css";
 export default function NewIncident() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [valor, setValor] = useState("");
+  const [value, setValue] = useState("");
 
   const ongID = localStorage.getItem("ongID");
   const history = useHistory();
@@ -16,10 +16,9 @@ export default function NewIncident() {
   async function handleNewIncident(e) {
     e.preventDefault();
 
-    const data = { title, description, valor };
+    const data = { title, description, value };
 
     try {
-      console.log(ongID);
       await api.post("incidents", data, {
         headers: { Authorization: ongID }
       });
@@ -62,8 +61,8 @@ export default function NewIncident() {
 
           <input
             placeholder="Valor em reais R$"
-            value={valor}
-            onChange={e => setValor(e.target.value)}
+            value={value}
+            onChange={e => setValue(e.target.value)}
           />
 
           <button className="button" type="submit">
